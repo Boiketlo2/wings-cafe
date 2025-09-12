@@ -22,7 +22,7 @@ export default function Inventory() {
 
   const updateStock = async (id, qtyChange) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}/update-stock`, {
+      const res = await fetch(`https://wings-cafe-4.onrender.com/api/products/${id}/update-stock`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ qtyChange }),
