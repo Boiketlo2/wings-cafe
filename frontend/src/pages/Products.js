@@ -9,10 +9,12 @@ export default function Products() {
     stock: "",
     category: "",
   });
-  const [image, setImage] = useState(null); // New image state
+  const [image, setImage] = useState(null);
+
+  const API_URL = "https://wings-cafe-4.onrender.com"; // <-- Live backend URL
 
   async function loadProducts() {
-    const res = await fetch("/api/products");
+    const res = await fetch(`${API_URL}/api/products`);
     setProducts(await res.json());
   }
 
@@ -20,7 +22,6 @@ export default function Products() {
     loadProducts();
   }, []);
 
-  // Add new product with image
   async function addProduct(e) {
     e.preventDefault();
 
@@ -32,7 +33,7 @@ export default function Products() {
     formData.append("category", parseInt(form.category));
     if (image) formData.append("image", image);
 
-    await fetch("/api/products", {
+    await fetch(`${API_URL}/api/products`, {
       method: "POST",
       body: formData,
     });
@@ -42,11 +43,10 @@ export default function Products() {
     loadProducts();
   }
 
-  // Delete product
   async function deleteProduct(id) {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
-    await fetch(`/api/products/${id}`, { method: "DELETE" });
+    await fetch(`${API_URL}/api/products/${id}`, { method: "DELETE" });
     loadProducts();
   }
 
@@ -54,7 +54,6 @@ export default function Products() {
     <div style={{ padding: "20px" }}>
       <h2>Product Management</h2>
 
-      {/* Products Table */}
       <table border="1" cellPadding="10" style={{ width: "100%", marginBottom: "30px" }}>
         <thead>
           <tr>
@@ -72,14 +71,9 @@ export default function Products() {
             <tr key={p.id}>
               <td>
                 <img
-                  src={`/images/products/${p.id}.jpg`}
+                  src={`${API_URL}/images/products/${p.id}.jpg`}
                   alt={p.name}
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  }}
+                  style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "8px" }}
                 />
               </td>
               <td>{p.name}</td>
@@ -107,7 +101,6 @@ export default function Products() {
         </tbody>
       </table>
 
-      {/* Add Product Form at the Bottom */}
       <form
         onSubmit={addProduct}
         style={{
