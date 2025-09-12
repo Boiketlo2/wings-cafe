@@ -10,7 +10,7 @@ export default function Inventory() {
 
   const fetchInventory = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch("https://wings-cafe-4.onrender.com/api/products");
       const data = await res.json();
       setInventory(data);
       setLoading(false);
