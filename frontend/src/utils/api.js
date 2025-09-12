@@ -3,7 +3,7 @@
 // ===========================
 export async function fetchCategories() {
   try {
-    const res = await fetch("http://localhost:5000/api/categories");
+    const res = await fetch("https://wings-cafe-4.onrender.com/api/categories");
     const data = await res.json();
     return Array.isArray(data) ? data : [];
   } catch (err) {
@@ -17,7 +17,7 @@ export async function fetchCategories() {
 // ===========================
 export async function fetchProducts(categoryId = null) {
   try {
-    let url = "http://localhost:5000/api/products";
+    let url = "https://wings-cafe-4.onrender.com/api/products";
     if (categoryId) url += `?category=${categoryId}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -33,7 +33,7 @@ export async function fetchProducts(categoryId = null) {
 // ===========================
 export async function postSale(sale) {
   try {
-    const res = await fetch("http://localhost:5000/api/sales", {
+    const res = await fetch("https://wings-cafe-4.onrender.com/api/sales", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(sale),
@@ -51,7 +51,7 @@ export async function postSale(sale) {
 // ===========================
 export async function fetchRecentSales() {
   try {
-    const res = await fetch("http://localhost:5000/api/sales/recent");
+    const res = await fetch("https://wings-cafe-4.onrender.com/api/sales/recent");
     const data = await res.json();
     // Ensure each sale item includes name, price, stock, description, image
     if (Array.isArray(data)) {
