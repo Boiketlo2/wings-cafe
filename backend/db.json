@@ -1,0 +1,556 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Coffee"
+    },
+    {
+      "id": 2,
+      "name": "Tea"
+    },
+    {
+      "id": 3,
+      "name": "Pastries"
+    },
+    {
+      "id": 4,
+      "name": "Sandwiches"
+    },
+    {
+      "id": 5,
+      "name": "Drinks"
+    }
+  ],
+  "products": [
+    {
+      "id": 101,
+      "categoryId": 1,
+      "price": 5,
+      "quantity": 36,
+      "description": "Single shot"
+    },
+    {
+      "id": 102,
+      "name": "Americano",
+      "categoryId": 1,
+      "price": 4,
+      "quantity": 34,
+      "description": "Hot americano"
+    },
+    {
+      "id": 103,
+      "name": "Latte",
+      "categoryId": 1,
+      "price": 3,
+      "quantity": 28,
+      "description": "Milk + espresso"
+    },
+    {
+      "id": 104,
+      "name": "Cappuccino",
+      "categoryId": 1,
+      "price": 4,
+      "quantity": 24,
+      "description": "Foam top"
+    },
+    {
+      "id": 105,
+      "name": "Mocha",
+      "categoryId": 1,
+      "price": 3,
+      "quantity": 4,
+      "description": "Chocolate + coffee"
+    },
+    {
+      "id": 201,
+      "name": "Green Tea",
+      "categoryId": 2,
+      "price": 2,
+      "quantity": 49,
+      "description": "Healthy"
+    },
+    {
+      "id": 202,
+      "name": "Black Tea",
+      "categoryId": 2,
+      "price": 4,
+      "quantity": 59,
+      "description": "Classic"
+    },
+    {
+      "id": 203,
+      "name": "Herbal Tea",
+      "categoryId": 2,
+      "price": 5,
+      "quantity": 36,
+      "description": "Caffeine-free"
+    },
+    {
+      "id": 204,
+      "name": "Chai Latte",
+      "categoryId": 2,
+      "price": 3,
+      "quantity": 29,
+      "description": "Spiced"
+    },
+    {
+      "id": 205,
+      "name": "Iced Tea",
+      "categoryId": 2,
+      "price": 6,
+      "quantity": 33,
+      "description": "Cold"
+    },
+    {
+      "id": 301,
+      "name": "Croissant",
+      "categoryId": 3,
+      "price": 4,
+      "quantity": 23,
+      "description": "Flaky"
+    },
+    {
+      "id": 302,
+      "name": "Muffin",
+      "categoryId": 3,
+      "price": 4,
+      "quantity": 19,
+      "description": "Blueberry"
+    },
+    {
+      "id": 303,
+      "name": "Danish",
+      "categoryId": 3,
+      "price": 2,
+      "quantity": 14,
+      "description": "Cheese"
+    },
+    {
+      "id": 304,
+      "name": "Scone",
+      "categoryId": 3,
+      "price": 2,
+      "quantity": 13,
+      "description": "Buttery"
+    },
+    {
+      "id": 305,
+      "name": "Cookie",
+      "categoryId": 3,
+      "price": 6,
+      "quantity": 50,
+      "description": "Chocolate chip"
+    },
+    {
+      "id": 401,
+      "name": "Ham Sandwich",
+      "categoryId": 4,
+      "price": 50,
+      "quantity": 19,
+      "description": "Ham & cheese"
+    },
+    {
+      "id": 402,
+      "name": "Veggie Sandwich",
+      "categoryId": 4,
+      "price": 15,
+      "quantity": 18,
+      "description": "Vegetarian"
+    },
+    {
+      "id": 403,
+      "name": "Chicken Sandwich",
+      "categoryId": 4,
+      "price": 20,
+      "quantity": 12,
+      "description": "Grilled chicken"
+    },
+    {
+      "id": 404,
+      "name": "Tuna Sandwich",
+      "categoryId": 4,
+      "price": 30,
+      "quantity": 11,
+      "description": "Tuna mayo"
+    },
+    {
+      "id": 405,
+      "name": "Club Sandwich",
+      "categoryId": 4,
+      "price": 35,
+      "quantity": 5,
+      "description": "Triple decker"
+    },
+    {
+      "id": 501,
+      "name": "Mineral Water",
+      "categoryId": 5,
+      "price": 1,
+      "quantity": 89,
+      "description": "Still water"
+    },
+    {
+      "id": 502,
+      "name": "Soda",
+      "categoryId": 5,
+      "price": 1,
+      "quantity": 79,
+      "description": "Carbonated"
+    },
+    {
+      "id": 503,
+      "name": "Fruit Juice",
+      "categoryId": 5,
+      "price": 8,
+      "quantity": 38,
+      "description": "Orange"
+    },
+    {
+      "id": 504,
+      "name": "Smoothie",
+      "categoryId": 5,
+      "price": 3,
+      "quantity": 19,
+      "description": "Mixed fruit"
+    },
+    {
+      "id": 505,
+      "name": "Milkshake",
+      "categoryId": 5,
+      "price": 10,
+      "quantity": 24,
+      "description": "Vanilla"
+    }
+  ],
+  "transactions": [
+    {
+      "items": [
+        {
+          "id": 501,
+          "qty": 4
+        }
+      ],
+      "total": 3.2,
+      "paymentMethod": "cash",
+      "id": 1757332060312,
+      "date": "2025-09-08T11:47:40.312Z"
+    },
+    {
+      "items": [
+        {
+          "id": 101,
+          "qty": 1
+        },
+        {
+          "id": 102,
+          "qty": 1
+        },
+        {
+          "id": 104,
+          "qty": 1
+        },
+        {
+          "id": 105,
+          "qty": 1
+        }
+      ],
+      "total": 9,
+      "paymentMethod": "cash",
+      "id": 1757332525595,
+      "date": "2025-09-08T11:55:25.595Z"
+    },
+    {
+      "items": [
+        {
+          "id": 101,
+          "qty": 1
+        },
+        {
+          "id": 104,
+          "qty": 1
+        },
+        {
+          "id": 105,
+          "qty": 1
+        }
+      ],
+      "total": 7,
+      "paymentMethod": "cash",
+      "id": 1757332586357,
+      "date": "2025-09-08T11:56:26.357Z"
+    },
+    {
+      "items": [
+        {
+          "id": 404,
+          "qty": 1
+        },
+        {
+          "id": 403,
+          "qty": 1
+        }
+      ],
+      "total": 7.4,
+      "paymentMethod": "cash",
+      "id": 1757403049504,
+      "date": "2025-09-09T07:30:49.504Z"
+    },
+    {
+      "items": [
+        {
+          "id": 101,
+          "qty": 3
+        },
+        {
+          "id": 102,
+          "qty": 2
+        },
+        {
+          "id": 103,
+          "qty": 3
+        },
+        {
+          "id": 104,
+          "qty": 2
+        },
+        {
+          "id": 105,
+          "qty": 3
+        }
+      ],
+      "total": 30,
+      "paymentMethod": "cash",
+      "id": 1757406679938,
+      "date": "2025-09-09T08:31:19.938Z"
+    },
+    {
+      "id": 1757421070010,
+      "type": "sale",
+      "items": [
+        {
+          "id": 101,
+          "qty": 4
+        },
+        {
+          "id": 102,
+          "qty": 2
+        },
+        {
+          "id": 103,
+          "qty": 3
+        },
+        {
+          "id": 104,
+          "qty": 2
+        },
+        {
+          "id": 105,
+          "qty": 3
+        }
+      ],
+      "total": 31.5,
+      "paymentMethod": "cash",
+      "date": "2025-09-09T12:31:10.010Z"
+    },
+    {
+      "id": 1757421273153,
+      "type": "sale",
+      "items": [
+        {
+          "id": 301,
+          "qty": 1
+        },
+        {
+          "id": 302,
+          "qty": 1
+        },
+        {
+          "id": 303,
+          "qty": 1
+        }
+      ],
+      "total": 5.3,
+      "paymentMethod": "cash",
+      "date": "2025-09-09T12:34:33.153Z"
+    },
+    {
+      "id": 1757422858522,
+      "type": "sale",
+      "items": [
+        {
+          "id": 102,
+          "qty": 1
+        },
+        {
+          "id": 201,
+          "qty": 1
+        },
+        {
+          "id": 204,
+          "qty": 1
+        },
+        {
+          "id": 205,
+          "qty": 1
+        },
+        {
+          "id": 501,
+          "qty": 1
+        },
+        {
+          "id": 503,
+          "qty": 1
+        },
+        {
+          "id": 504,
+          "qty": 1
+        }
+      ],
+      "total": 12.5,
+      "paymentMethod": "cash",
+      "date": "2025-09-09T13:00:58.522Z"
+    },
+    {
+      "id": 1757423232636,
+      "type": "sale",
+      "items": [
+        {
+          "id": 101,
+          "qty": 1
+        },
+        {
+          "id": 202,
+          "qty": 1
+        },
+        {
+          "id": 403,
+          "qty": 1
+        }
+      ],
+      "total": 6.3,
+      "paymentMethod": "cash",
+      "date": "2025-09-09T13:07:12.636Z"
+    },
+    {
+      "id": 1757424007433,
+      "type": "sale",
+      "items": [
+        {
+          "id": 101,
+          "qty": 1
+        }
+      ],
+      "total": 1.5,
+      "paymentMethod": "cash",
+      "date": "2025-09-09T13:20:07.433Z"
+    },
+    {
+      "id": 1757501189258,
+      "type": "sale",
+      "items": [
+        {
+          "id": 105,
+          "qty": 1
+        }
+      ],
+      "total": 3,
+      "paymentMethod": "cash",
+      "date": "2025-09-10T10:46:29.258Z"
+    },
+    {
+      "id": 1757504093176,
+      "type": "sale",
+      "items": [
+        {
+          "id": 101,
+          "qty": 1
+        },
+        {
+          "id": 103,
+          "qty": 1
+        },
+        {
+          "id": 203,
+          "qty": 1
+        },
+        {
+          "id": 205,
+          "qty": 1
+        },
+        {
+          "id": 301,
+          "qty": 1
+        },
+        {
+          "id": 304,
+          "qty": 1
+        },
+        {
+          "id": 401,
+          "qty": 1
+        },
+        {
+          "id": 403,
+          "qty": 1
+        },
+        {
+          "id": 502,
+          "qty": 1
+        },
+        {
+          "id": 503,
+          "qty": 1
+        },
+        {
+          "id": 505,
+          "qty": 1
+        }
+      ],
+      "total": 114,
+      "paymentMethod": "cash",
+      "date": "2025-09-10T11:34:53.176Z"
+    },
+    {
+      "id": 1757522021232,
+      "type": "sale",
+      "items": [
+        {
+          "id": 101,
+          "qty": 2
+        },
+        {
+          "id": 203,
+          "qty": 3
+        },
+        {
+          "id": 304,
+          "qty": 4
+        },
+        {
+          "id": 405,
+          "qty": 5
+        },
+        {
+          "id": 501,
+          "qty": 6
+        }
+      ],
+      "total": 214,
+      "paymentMethod": "cash",
+      "date": "2025-09-10T16:33:41.232Z"
+    },
+    {
+      "id": 1757533082844,
+      "type": "sale",
+      "items": [
+        {
+          "id": 105,
+          "qty": 12
+        }
+      ],
+      "total": 36,
+      "paymentMethod": "cash",
+      "date": "2025-09-10T19:38:02.844Z"
+    }
+  ]
+}
