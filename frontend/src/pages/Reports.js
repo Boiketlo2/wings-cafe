@@ -4,7 +4,7 @@ export default function Reports() {
   const [sales, setSales] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/report/sales-summary")
+    fetch("https://wings-cafe-4.onrender.com/api/report/sales-summary")
       .then((res) => res.json())
       .then(setSales)
       .catch((err) => console.error("Reports error:", err));
