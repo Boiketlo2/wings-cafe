@@ -57,7 +57,6 @@ export default function Products() {
       <table border="1" cellPadding="10" style={{ width: "100%", marginBottom: "30px" }}>
         <thead>
           <tr>
-            <th>Image</th>
             <th>Name</th>
             <th>Description</th>
             <th>Stock</th>
@@ -69,13 +68,6 @@ export default function Products() {
         <tbody>
           {products.map((p) => (
             <tr key={p.id}>
-              <td>
-                <img
-                  src={`${API_URL}/images/products/${p.id}.jpg`}
-                  alt={p.name}
-                  style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "8px" }}
-                />
-              </td>
               <td>{p.name}</td>
               <td>{p.description}</td>
               <td>{p.stock}</td>
