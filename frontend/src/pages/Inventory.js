@@ -4,6 +4,7 @@ export default function Inventory() {
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Load inventory on mount
   useEffect(() => {
     fetchInventory();
   }, []);
@@ -20,19 +21,25 @@ export default function Inventory() {
     }
   };
 
+  // Update stock for a product
   const updateStock = async (id, qtyChange) => {
     try {
-      const res = await fetch(`https://wings-cafe-4.onrender.com/api/products/${id}/update-stock`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ qtyChange }),
-      });
+      const res = await fetch(
+        `https://wings-cafe-4.onrender.com/api/products/${id}/update-stock`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ qtyChange }),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to update stock");
 
       const updatedProduct = await res.json();
       setInventory(prev =>
-        prev.map(item => (item.id === id ? { ...item, stock: updatedProduct.stock } : item))
+        prev.map(item =>
+          item.id === id ? { ...item, stock: updatedProduct.stock } : item
+        )
       );
     } catch (err) {
       console.error("Stock update error:", err);
@@ -55,9 +62,9 @@ export default function Inventory() {
   if (loading) return <p>Loading inventory...</p>;
 
   return (
-    <div className="inventory-root">
+    <div className="inventory-root" style={{ padding: "20px" }}>
       <h2>Inventory</h2>
-      <table>
+      <table border="1" cellPadding="10" style={{ width: "100%" }}>
         <thead>
           <tr>
             <th>Product</th>
@@ -77,13 +84,28 @@ export default function Inventory() {
               <td>
                 <button
                   onClick={() => addStock(item.id)}
-                  style={{ backgroundColor: "blue", color: "white", marginRight: "5px", padding: "5px 10px", border: "none", borderRadius: "5px" }}
+                  style={{
+                    backgroundColor: "blue",
+                    color: "white",
+                    marginRight: "5px",
+                    padding: "5px 10px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
                 >
                   Add
                 </button>
                 <button
                   onClick={() => removeStock(item.id)}
-                  style={{ backgroundColor: "red", color: "white", padding: "5px 10px", border: "none", borderRadius: "5px" }}
+                  style={{
+                    backgroundColor: "red",
+                    color: "white",
+                    padding: "5px 10px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
                 >
                   Remove
                 </button>
