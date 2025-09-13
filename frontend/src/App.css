@@ -55,7 +55,7 @@
 }
 
 .topbar-item.active {
-  background: white;
+  background: blue;
   color: var(--blue);
   font-weight: bold;
 }
