@@ -105,7 +105,6 @@ app.get("/api/products", (req, res) => {
 app.put("/api/products/:id/update-stock", (req, res) => {
   const { id } = req.params;
   const { qtyChange } = req.body;
-
   const product = products.find(p => p.id === parseInt(id));
   if (!product) return res.status(404).json({ error: "Product not found" });
 
@@ -156,10 +155,23 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 // ===========================
-// Record sale (persist to db.json)
+// Record sale (persist to db.json) with stock check
 // ===========================
 app.post("/api/sales", (req, res) => {
   const db = readDB();
+
+  // Check stock before recording sale
+  for (let item of req.body.items) {
+    const product = products.find(p => p.id === item.id);
+    if (!product) {
+      return res.status(404).json({ error: `Product ${item.id} not found` });
+    }
+    if (product.stock < item.qty) {
+      return res.status(400).json({ 
+        error: `Insufficient stock for ${product.name}. Available: ${product.stock}` 
+      });
+    }
+  }
 
   const sale = {
     id: Date.now(),
@@ -170,7 +182,7 @@ app.post("/api/sales", (req, res) => {
     date: new Date().toISOString(),
   };
 
-  // Deduct stock (in-memory products only)
+  // Deduct stock
   sale.items.forEach(item => {
     const product = products.find(p => p.id === item.id);
     if (product) product.stock -= item.qty;
@@ -205,18 +217,19 @@ app.get("/api/sales/recent", (req, res) => {
 });
 
 // ===========================
-// Sales Summary / Reports (from db.json)
+// Sales Summary / Reports (from db.json) with out-of-stock
 // ===========================
 app.get("/api/report/sales-summary", (req, res) => {
   const db = readDB();
   const summary = {};
   const bestSelling = {};
+
   const outOfStock = products.filter(p => p.stock <= 0).map(p => p.name);
 
   db.transactions.forEach(sale => {
     const date = sale.date.slice(0, 10);
-
     if (!summary[date]) summary[date] = { count: 0, total: 0, products: {} };
+
     summary[date].count += 1;
     summary[date].total += sale.total;
 
