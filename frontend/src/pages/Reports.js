@@ -23,9 +23,10 @@ export default function Reports() {
           // Find if this product is best selling
           const bestSellingQty =
             sales.bestSelling?.find((p) => p.name === product)?.qty ?? "";
-          // Check if out of stock
+
+          // Check if out of stock using backend outOfStock array
           const outOfStock =
-            sales.outOfStock?.find((p) => p.name === product) ? "Yes" : "";
+            sales.outOfStock?.some((name) => name === product) ? "Yes" : "";
 
           tableData.push({
             date,
