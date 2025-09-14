@@ -9,7 +9,20 @@ app.use(cors());
 app.use(express.json());
 
 // ===========================
-// Categories
+// DB Helpers
+// ===========================
+const dbPath = path.join(__dirname, "db.json");
+
+function readDB() {
+  return JSON.parse(fs.readFileSync(dbPath, "utf8"));
+}
+
+function writeDB(data) {
+  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), "utf8");
+}
+
+// ===========================
+// Categories (in memory for now)
 // ===========================
 let categories = [
   { id: 1, name: "Coffee" },
@@ -20,7 +33,7 @@ let categories = [
 ];
 
 // ===========================
-// Products
+// Products (still in memory)
 // ===========================
 let products = [
   // Coffee
@@ -58,11 +71,6 @@ let products = [
   { id: 504, name: "Smoothie", description: "Fruity blend", price: 4, category: 5, stock: 12, image: "smoothie.jpg" },
   { id: 505, name: "Milkshake", description: "Creamy treat", price: 5, category: 5, stock: 10, image: "milkshake.jpg" }
 ];
-
-// ===========================
-// Sales
-// ===========================
-let sales = [];
 
 // ===========================
 // Multer setup for image uploads
@@ -137,7 +145,6 @@ app.delete("/api/products/:id", (req, res) => {
   const index = products.findIndex((p) => p.id === parseInt(id));
   if (index === -1) return res.status(404).json({ error: "Product not found" });
 
-  // Remove image if exists
   const product = products[index];
   if (product.image) {
     const imgPath = path.join(__dirname, "uploads", product.image);
@@ -149,9 +156,11 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 // ===========================
-// Record sale
+// Record sale (persist to db.json)
 // ===========================
 app.post("/api/sales", (req, res) => {
+  const db = readDB();
+
   const sale = {
     id: Date.now(),
     type: "sale",
@@ -161,20 +170,24 @@ app.post("/api/sales", (req, res) => {
     date: new Date().toISOString(),
   };
 
+  // Deduct stock (in-memory products only)
   sale.items.forEach(item => {
     const product = products.find(p => p.id === item.id);
     if (product) product.stock -= item.qty;
   });
 
-  sales.unshift(sale);
+  db.transactions.push(sale);
+  writeDB(db);
+
   res.json(sale);
 });
 
 // ===========================
-// Recent Sales
+// Recent Sales (from db.json)
 // ===========================
 app.get("/api/sales/recent", (req, res) => {
-  const recent = sales.slice(0, 10).map(sale => ({
+  const db = readDB();
+  const recent = db.transactions.slice(-10).reverse().map(sale => ({
     ...sale,
     items: sale.items.map(item => {
       const product = products.find(p => p.id === item.id);
@@ -192,14 +205,15 @@ app.get("/api/sales/recent", (req, res) => {
 });
 
 // ===========================
-// Sales Summary / Reports
+// Sales Summary / Reports (from db.json)
 // ===========================
 app.get("/api/report/sales-summary", (req, res) => {
+  const db = readDB();
   const summary = {};
   const bestSelling = {};
   const outOfStock = products.filter(p => p.stock <= 0).map(p => p.name);
 
-  sales.forEach(sale => {
+  db.transactions.forEach(sale => {
     const date = sale.date.slice(0, 10);
 
     if (!summary[date]) summary[date] = { count: 0, total: 0, products: {} };
@@ -221,7 +235,6 @@ app.get("/api/report/sales-summary", (req, res) => {
   });
 
   const bestSellingFiltered = Object.entries(bestSelling)
-    .filter(([name, info]) => info.qty > 5)
     .sort((a, b) => b[1].qty - a[1].qty)
     .map(([name, info]) => ({ name, ...info }));
 
