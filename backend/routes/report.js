@@ -34,7 +34,7 @@ router.post("/sales", (req, res) => {
   // Deduct stock
   items.forEach((item) => {
     const product = db.products.find((p) => p.id === item.id);
-    if (product) product.quantity -= item.qty;
+    if (product) product.quantity = Math.max(0, product.quantity - item.qty);
   });
 
   db.transactions.push(newSale);
@@ -72,15 +72,17 @@ router.get("/sales-summary", (req, res) => {
     });
   });
 
-  // Products no longer available
-  const outOfStock = db.products.filter((p) => p.quantity <= 0).map((p) => p.name);
+  // Products that are out of stock
+  const outOfStock = db.products
+    .filter((p) => p.quantity <= 0)
+    .map((p) => p.name);
 
   res.json({
     summary,
     bestSelling: Object.entries(productSales)
       .sort((a, b) => b[1].qty - a[1].qty)
       .map(([name, info]) => ({ name, ...info })),
-    outOfStock,
+    outOfStock, // array of product names
   });
 });
 
