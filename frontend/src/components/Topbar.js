@@ -14,18 +14,19 @@ export default function Topbar() {
     <div
       className="topbar"
       style={{
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "1fr auto 1fr", // ✅ 3 columns
         alignItems: "center",
         padding: "10px 20px",
         backgroundColor: "#007bff",
         color: "#fff",
-        borderBottom: "4px solid #0044cc", // full-width border like footer
+        borderBottom: "4px solid #0044cc",
         width: "100%",
         boxSizing: "border-box",
-        position: "fixed",   // ✅ make it fixed
-        top: 0,              // ✅ stick to the top
-        center: 0,             // ✅ align from left
-        zIndex: 1000         // ✅ stay above other content
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1000
       }}
     >
       {/* Left: Logo */}
@@ -56,7 +57,6 @@ export default function Topbar() {
       <div
         className="topbar-center"
         style={{
-          flex: 1,
           display: "flex",
           justifyContent: "center",
           gap: "20px"
@@ -79,7 +79,10 @@ export default function Topbar() {
       </div>
 
       {/* Right: User info */}
-      <div className="topbar-right">
+      <div
+        className="topbar-right"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
         <span className="user-info">Mr B.Alotsi 👤</span>
       </div>
     </div>
