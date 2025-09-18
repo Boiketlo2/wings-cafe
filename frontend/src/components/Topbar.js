@@ -1,4 +1,3 @@
-You said:
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -15,14 +14,20 @@ export default function Topbar() {
     <div
       className="topbar"
       style={{
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "1fr auto 1fr", // ✅ 3 columns
         alignItems: "center",
         padding: "10px 20px",
         backgroundColor: "#007bff",
         color: "#fff",
-        borderBottom: "4px solid #0044cc", // full-width border like footer
-        width: "100%",
-        boxSizing: "border-box"
+        borderBottom: "4px solid #0044cc",
+        boxSizing: "border-box",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,       // ✅ full width
+        zIndex: 1000,
+        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)" // ✅ floating effect
       }}
     >
       {/* Left: Logo */}
@@ -53,7 +58,6 @@ export default function Topbar() {
       <div
         className="topbar-center"
         style={{
-          flex: 1,
           display: "flex",
           justifyContent: "center",
           gap: "20px"
@@ -76,7 +80,10 @@ export default function Topbar() {
       </div>
 
       {/* Right: User info */}
-      <div className="topbar-right">
+      <div
+        className="topbar-right"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
         <span className="user-info">Mr B.Alotsi 👤</span>
       </div>
     </div>
