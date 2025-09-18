@@ -24,7 +24,7 @@ export default function Topbar() {
         boxSizing: "border-box",
         position: "fixed",   // ✅ make it fixed
         top: 0,              // ✅ stick to the top
-        left: 0,             // ✅ align from left
+        center: 0,             // ✅ align from left
         zIndex: 1000         // ✅ stay above other content
       }}
     >
