@@ -1,5 +1,7 @@
 .dashboard-root {
+  padding-top: 80px; /* pushes content below the fixed topbar */
   padding: 15px;
+  box-sizing: border-box;
 }
 
 .welcome-message {
