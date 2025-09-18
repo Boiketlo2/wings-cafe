@@ -21,12 +21,13 @@ export default function Topbar() {
         backgroundColor: "#007bff",
         color: "#fff",
         borderBottom: "4px solid #0044cc",
-        width: "100%",
         boxSizing: "border-box",
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 1000
+        right: 0,       // ✅ full width
+        zIndex: 1000,
+        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)" // ✅ floating effect
       }}
     >
       {/* Left: Logo */}
