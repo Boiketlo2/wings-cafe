@@ -1,6 +1,5 @@
 .dashboard-root {
   /* space for the fixed Topbar */
-  margin-top: 80px;   /* 👈 use margin instead of padding */
   padding: 15px;
   box-sizing: border-box;
 }
