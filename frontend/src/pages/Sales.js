@@ -7,6 +7,7 @@ export default function Sales() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [recentOrders, setRecentOrders] = useState([]);
+  const [topbarHeight, setTopbarHeight] = useState(0);
 
   useEffect(() => {
     fetchCategories().then((cs) => {
@@ -14,6 +15,12 @@ export default function Sales() {
       if (cs[0]) setActiveCategory(cs[0].id);
     });
     loadRecentOrders();
+
+    // measure topbar
+    const tb = document.querySelector(".topbar");
+    if (tb) {
+      setTopbarHeight(tb.offsetHeight);
+    }
   }, []);
 
   useEffect(() => {
@@ -58,7 +65,7 @@ export default function Sales() {
   }
 
   return (
-    <div className="app-root">
+    <div className="app-root" style={{ marginTop: topbarHeight }}>
       {/* Categories */}
       <div className="top-icons">
         {categories.map((cat) => (
