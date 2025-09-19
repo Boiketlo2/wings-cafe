@@ -22,12 +22,8 @@ export default function Topbar() {
         color: "#fff",
         borderBottom: "4px solid #0044cc",
         boxSizing: "border-box",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,       // ✅ full width
-        zIndex: 1000,
-        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)" // ✅ floating effect
+        width: "100%",       // ✅ full width
+        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)" // ✅ subtle shadow
       }}
     >
       {/* Left: Logo */}
